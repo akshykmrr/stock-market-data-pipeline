@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+venv/
+airflow_venv/
+.env
+*.json
+target/
+dbt_packages/
+.DS_Store
+Thumbs.db
+*.log
