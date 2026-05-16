@@ -1,0 +1,11 @@
+*.pbix linguist-vendored
+
+target/* linguist-generated
+
+*.log linguist-generated
+
+# Treat SQL as SQL
+*.sql linguist-language=SQL
+
+# Treat Python correctly
+*.py linguist-language=Python
