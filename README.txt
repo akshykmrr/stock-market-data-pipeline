@@ -1,8 +1,10 @@
-# STOCK MARKET ANALYTICS PIPELINE
+## STOCK MARKET ANALYTICS PIPELINE ##
 
 # Purpose:
 
 The purpose of the project is to build a fully automated pipeline that ingests financial market data for ETF performance analysis.
+The dashboard is designed to provide a consolidated view of ETF behavior by combining price trends, volatility analysis, momentum 
+indicators, and trading activity into a single analytics interface.
 
 ETFs observed:
 1. QQQ — Invesco QQQ Trust (Nasdaq-100)
@@ -28,7 +30,8 @@ The final solution provides a workflow that monitors:
 Phase 1 - Data Ingestion
 
 DAG set up in Airflow is run on a daily schedule. It triggers the below processes:
-1. Python Script for ETL that fetches stock data for 'QQQ' and 'SPY' ETFs from Alpha Vantage using an API, performs initial transformation like column header normalization, datatype consistency and loads raw data into a reference table in BigQuery.
+1. Python Script for ETL that fetches stock data for 'QQQ' and 'SPY' ETFs from Alpha Vantage using an API, performs initial transformation like column header normalization, 
+datatype consistency and loads raw data into a reference table in BigQuery.
 2. A following task is set up to remove any duplicate records (keep already existing data and remove duplicate data from each run) and stores it in one more reference table.
 
 Phase 2 - dbt Transformations
@@ -49,7 +52,13 @@ Following charts and cards are used to visualize ingested data for overall analy
 6. Daily Volume Change. The total increase or decrease in volume, along with the percentage difference, is calculated between the current market day and previous market day.
 7. Mean Volatility (by date). It depicts how much the ETF price fluctuates over time. Higher value means larger price swings and lower value means a more stable movement in price.
 8. Volatility Distribution. It shows how frequently the volatility falls within a certain range. It gives an idea of the ETF's overall volatility behaviour.
-9. Moving Average Gap (by date). It is the difference between the short-term (7-days) moving average and long-term (30-days) moving average. When the line is above 0, short term momentum is stronger - bullish behaviour. When line is below 0, short term momentum is weaker  - bearish behaviour. When it just crosses 0, it is known as the Golden Cross (good time to invest).
+9. Moving Average Gap (by date). It is the difference between the short-term (7-days) moving average and long-term (30-days) moving average. When the line is above 0, short term 
+momentum is stronger - bullish behaviour. When line is below 0, short term momentum is weaker  - bearish behaviour. When it just crosses 0, it is known as the Golden Cross (good 
+time to invest).
+
+# Dashboard Access
+
+The Power BI dashboard is available in this path: stock-market-data-pipeline\dashboard\stock-market-analytics.pbix
 
 # Security Notes
 
